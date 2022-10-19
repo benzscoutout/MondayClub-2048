@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useThrottledCallback } from "use-debounce";
-
+import { useSwipeable } from 'react-swipeable';
 import { useGame } from "./hooks/useGame";
 import { Board, animationDuration, tileCount } from "../Board";
+import './game.less';
 
 export const Game = () => {
   const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
@@ -41,6 +42,30 @@ export const Game = () => {
       window.removeEventListener("keydown", throttledHandleKeyDown);
     };
   }, [throttledHandleKeyDown]);
+  const handlers = useSwipeable({
+    onSwipedLeft: () => moveLeft(),
+    onSwipedRight: () => moveRight(),
+    onSwipedDown: () => moveDown(),
+    onSwipedUp: () => moveUp(),
+    swipeDuration: Infinity,
+    preventScrollOnSwipe: false,
+    trackMouse: false,
+    trackTouch: true,
+    touchEventOptions: { passive: true }
+  });
 
-  return <Board tiles={tiles} tileCountPerRow={tileCount} />;
+
+  return (
+    <div className="container d-flex flex-column container-control" >
+      <div className="desktop-custom">
+      <Board tiles={tiles} tileCountPerRow={tileCount} />
+      </div>
+      <div className="mobile-custom mobile-control" style={{ touchAction: 'pan-y' }} {...handlers}>
+        <Board tiles={tiles} tileCountPerRow={tileCount}   />
+      </div>
+
+    </div>
+  )
+
+
 };

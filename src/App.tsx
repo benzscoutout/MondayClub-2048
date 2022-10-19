@@ -1,29 +1,43 @@
-import React, { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "./components/Button";
 import { Game } from "./components/Game";
 
 import "./App.less";
+import { useGame } from "./components/Game/hooks/useGame";
 
 /* eslint-disable react/jsx-no-target-blank */
 export const App = () => {
   const [date, setDate] = useState<Date>(new Date());
-
+  const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
+  const [curr, setCurr] = useState(0);
   const handleRestart = () => {
     setDate(new Date());
   };
 
+
+
+
   return (
     <div className="App">
       <div className="header">
-        <div>
-          <h1>Play 2048</h1>
-        </div>
-        <div>
-          <Button onClick={handleRestart}>Restart</Button>
+        <div className="grid-control">
+          <div>
+            <h1>Play SQUAD 2048</h1>
+          </div>
+          <div className="d-flex">
+            <Button onClick={handleRestart}>Restart</Button>
+          </div>
         </div>
       </div>
+      <div className="game-control">
       <Game key={date.toISOString()} />
-      <div>
+      </div>
+     
+
+
+
+
+      {/* <div>
         <p>
           <b>Wondering how was that built?</b> You can find a video tutorial and
           code here:
@@ -66,7 +80,7 @@ export const App = () => {
         >
           Matt Sokola
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "monday-club-48189"
+  },
+  "targets": {
+    "monday-club-48189": {
+      "hosting": {
+        "game-squad-2048": [
+          "game-squad-2048"
+        ]
+      }
+    }
+  }
+}

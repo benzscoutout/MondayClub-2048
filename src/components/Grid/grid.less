@@ -14,4 +14,20 @@
     border-radius: @pixel-size * 0.5;
     background: rgba(238, 228, 218, 0.35);
   }
+
+  @media screen and (max-width: 500px) {
+    &-cell {
+      width: @pixel-size * 9;
+      height: @pixel-size * 9;
+    
+    }
+  }
+
+  @media screen and (max-width: 280px) {
+    &-cell {
+      width: @pixel-size * 5;
+      height: @pixel-size * 5;
+    
+    }
+  }
 }

@@ -9,6 +9,7 @@
   background-color: #eee4da;
   color: #776e65;
   font-weight: bold;
+  display: flex;
   text-align: center;
   font-size: @pixel-size * 6;
   line-height: 2.1;
@@ -96,5 +97,27 @@
     background: #edc22e;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556),
       inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
+  }
+
+}
+.pos-img {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  margin: auto;
+}
+@media screen and (max-width: 500px) {
+  .tile {
+    width: @pixel-size * 9;
+    height: @pixel-size * 9;
+  
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .tile {
+    width: @pixel-size * 5;
+    height: @pixel-size * 5;
+  
   }
 }

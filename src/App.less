@@ -1,14 +1,14 @@
 @import "./styles/index.less";
 
 .App {
-  max-width: @pixel-size * 60;
+  max-width: @pixel-size * 90;
   margin: @pixel-size * 0 auto;
 
   .header {
     display: flex;
     width: 100%;
 
-    > div {
+    >div {
       flex: 1;
     }
 
@@ -16,11 +16,62 @@
       float: right;
       margin: @pixel-size * 3.25 @pixel-size * 0;
     }
+
+    @media screen and (max-width: 500px) {
+      .button {
+        float: none;
+        margin: @pixel-size * 3.25 @pixel-size * 0;
+      }
+    }
   }
 
   .footer {
     margin: @pixel-size * 3 @pixel-size * 0;
     font-weight: bold;
     text-align: center;
+  }
+
+  .button-cursor {
+    cursor: pointer;
+  }
+
+  .grid-control {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .game-control {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: 40px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .grid-control {
+      display: grid;
+      grid-template-columns: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .game-control {
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      margin-top: 40px;
+    }
+
+    .button-cursor {
+      text-align: center;
+      display: block;
+      cursor: pointer;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
