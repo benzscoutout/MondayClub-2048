@@ -1,0 +1,94 @@
+@import "../../styles/index.less";
+
+
+
+.home {
+
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    min-height: 600px;
+    margin-top: 30px;
+    padding-bottom: 5%;
+
+    .img-logo {
+        width: 300px;
+        height: auto;
+        object-fit: contain;
+        margin-left: auto;
+        margin-right: auto;
+
+
+    }
+
+    .img-city {
+        position: absolute;
+        background: url(../../assets/images/city.png);
+        background-repeat: repeat-x;
+        background-size: contain;
+        height: 300px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        position: fixed;
+        margin-top: 60px;
+        width: 100%;
+        object-fit: contain;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .img-game {
+        margin-top: 41px;
+        margin-bottom: 41px;
+        width: 300px;
+        height: auto;
+        object-fit: contain;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .button-start {
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        font-size: 26px;
+        font-weight: bold;
+        border-radius: 12px;
+        background-color: @yellowColor;
+        height: 51px;
+        color: white;
+        width: 50%;
+    }
+
+    .text-license {
+        font-size: 14px;
+        color: white;
+        opacity: 0.4;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        .img-logo {
+            width: 200px;
+        }
+
+        .img-game {
+            width: 200px;
+        }
+    }
+}
