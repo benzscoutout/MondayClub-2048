@@ -3,6 +3,7 @@
 .App {
   max-width: @pixel-size * 90;
   margin: @pixel-size * 0 auto;
+ 
 
   .header {
     display: flex;
@@ -14,6 +15,8 @@
 
     .button {
       float: right;
+      margin-left: auto !important;
+      margin-right: auto !important;
       margin: @pixel-size * 3.25 @pixel-size * 0;
     }
 
@@ -36,8 +39,24 @@
   }
 
   .grid-control {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .button-control{
+      margin-top: 24px;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+      background-color: #776e65;
+      border: none;
+      border-radius: 16px;
+      height: 51px;
+      color: white;
+      font-size: 20px;
+    }
   }
 
   .game-control {
@@ -51,8 +70,8 @@
 
   @media screen and (max-width: 500px) {
     .grid-control {
-      display: grid;
-      grid-template-columns: 100%;
+      display: block;
+      grid-template-columns: none;
       justify-content: center;
       text-align: center;
     }
@@ -73,5 +92,11 @@
       margin-left: auto;
       margin-right: auto;
     }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .App{
+    overscroll-behavior-y: contain;
   }
 }

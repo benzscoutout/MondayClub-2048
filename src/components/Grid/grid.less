@@ -15,7 +15,7 @@
     background: rgba(238, 228, 218, 0.35);
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 576px) {
     &-cell {
       width: @pixel-size * 9;
       height: @pixel-size * 9;
@@ -23,10 +23,18 @@
     }
   }
 
-  @media screen and (max-width: 280px) {
+  @media screen and (max-width: 410px) {
     &-cell {
-      width: @pixel-size * 5;
-      height: @pixel-size * 5;
+      width: @pixel-size * 8;
+      height: @pixel-size * 8;
+    
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    &-cell {
+      width: @pixel-size * 7;
+      height: @pixel-size * 7;
     
     }
   }

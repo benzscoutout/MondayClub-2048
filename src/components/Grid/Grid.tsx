@@ -17,5 +17,12 @@ export const Grid = () => {
     return cells;
   };
 
-  return <div className="grid">{renderGrid()}</div>;
+  return (
+    <div className="grid-control">
+
+
+      <div className="grid">{renderGrid()}</div>
+    </div>
+  )
+
 };

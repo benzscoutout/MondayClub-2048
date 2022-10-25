@@ -59,13 +59,19 @@ export const Tile = ({ value, position, zIndex }: Props) => {
    */
   const positionToPixels = (position: number) => {
     console.log(width);
-    if(width > 480){
+    if (width > 576) {
       return (position / tileCount) * (containerWidth as number);
     }
-    if(width <= 280){
-      return (position / tileCount) * (225 as number);
+    else if (width <= 410 && width > 375) {
+      return (position / tileCount) * (318 as number);
     }
-    else{
+    else if (width <= 375 && width > 346) {
+      return (position / tileCount) * (288 as number);
+    }
+    else if (width <= 345) {
+      return (position / tileCount) * (290 as number);
+    }
+    else {
       return (position / tileCount) * (350 as number);
     }
 
@@ -82,29 +88,62 @@ export const Tile = ({ value, position, zIndex }: Props) => {
   return (
     <div className={`tile tile-${value}`} style={style}>
       {
-        value === 2 ? 
-        <img src={C1_IMG} className={`pos-img my-auto`}></img> : 
-        value === 4 ?
-        <img src={C2_IMG} className={`pos-img my-auto`}></img> :
-        value === 8 ?
-        <img src={C3_IMG} className={`pos-img my-auto`}></img> :
-        value === 16 ?
-        <img src={C4_IMG} className={`pos-img my-auto`}></img> :
-        value === 32 ?
-        <img src={C5_IMG} className={`pos-img my-auto`}></img> :
-        value === 64 ?
-        <img src={C6_IMG} className={`pos-img my-auto`}></img> :
-        value === 128 ?
-        <img src={C7_IMG} className={`pos-img my-auto`}></img> :
-        value === 256 ?
-        <img src={C8_IMG} className={`pos-img my-auto`}></img> :
-        value === 512 ?
-        <img src={C9_IMG} className={`pos-img my-auto`}></img> :
-        value === 1024 ?
-        <img src={C10_IMG} className={`pos-img my-auto`}></img> :
-        value === 2048 ?
-        <img src={C11_IMG} className={`pos-img my-auto`}></img> :
-        value
+        value === 2 ?
+          <div className="tile-control">
+            <img src={C1_IMG} className={`pos-img my-auto`}></img>
+            <span className="font-bg">2</span>
+          </div> :
+          value === 4 ?
+            <div className="tile-control">
+              <img src={C2_IMG} className={`pos-img my-auto`}></img>
+              <span className="font-bg">4</span>
+            </div> :
+            value === 8 ?
+              <div className="tile-control">
+                <img src={C3_IMG} className={`pos-img my-auto`}></img>
+                <span className="font-bg">8</span>
+              </div> :
+              value === 16 ?
+                <div className="tile-control">
+                  <img src={C4_IMG} className={`pos-img my-auto`}></img>
+                  <span className="font-bg">16</span>
+                </div> :
+                value === 32 ?
+                  <div className="tile-control">
+                    <img src={C5_IMG} className={`pos-img my-auto`}></img>
+                    <span className="font-bg">32</span>
+                  </div> :
+                  value === 64 ?
+                    <div className="tile-control">
+                      <img src={C6_IMG} className={`pos-img my-auto`}></img>
+                      <span className="font-bg">64</span>
+                    </div> :
+                    value === 128 ?
+                      <div className="tile-control">
+                        <img src={C7_IMG} className={`pos-img my-auto`}></img>
+                        <span className="font-bg">128</span>
+                      </div> :
+                      value === 256 ?
+                        <div className="tile-control">
+                          <img src={C8_IMG} className={`pos-img my-auto`}></img>
+                          <span className="font-bg">256</span>
+                        </div> :
+                        value === 512 ?
+                          <div className="tile-control">
+                            <img src={C9_IMG} className={`pos-img my-auto`}></img>
+                            <span className="font-bg">512</span>
+                          </div> :
+                          value === 1024 ?
+                            <div className="tile-control">
+                              <img src={C10_IMG} className={`pos-img my-auto`}></img>
+                              <span className="font-bg">1024</span>
+                            </div> :
+                            value === 2048 ?
+                              <div className="tile-control">
+                                <img src={C11_IMG} className={`pos-img my-auto`}></img>
+                                <span className="font-bg">2048</span>
+                              </div> :
+                              value
       }
     </div>
   );

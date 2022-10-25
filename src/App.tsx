@@ -13,7 +13,8 @@ export const App = () => {
   const handleRestart = () => {
     setDate(new Date());
   };
-
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
 
 
@@ -21,18 +22,17 @@ export const App = () => {
     <div className="App">
       <div className="header">
         <div className="grid-control">
-          <div>
-            <h1>Play SQUAD 2048</h1>
-          </div>
-          <div className="d-flex">
-            <Button onClick={handleRestart}>Restart</Button>
-          </div>
+          <h1>Play SQUAD 2048</h1>
         </div>
       </div>
       <div className="game-control">
-      <Game key={date.toISOString()} />
+        <Game key={date.toISOString()} />
       </div>
-     
+      <div className="grid-control">
+        <button onClick={handleRestart} className="button-control">Restart</button>
+      </div>
+      {/* {vw} x {vh} */}
+
 
 
 

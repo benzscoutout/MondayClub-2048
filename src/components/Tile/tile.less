@@ -30,12 +30,35 @@
     font-size: @pixel-size * 4;
     line-height: 3.18;
   }
+
   /* -=-=-=-= END OF TEXT SIZE =-=-=-=- */
 
   &-2 {
-    background: #eee4da;
+    position: absolute;
+    z-index: 1;
+    font-size: 70px;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0),
       inset 0 0 0 1px rgba(255, 255, 255, 0);
+  }
+
+  .tile-control {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .font-bg {
+    z-index: 1;
+    font-size: 16px;
+    line-height: 23px;
+    background-color: transparent;
+    box-shadow: 0 0 30px 10px transparent,
+      inset 0 0 0 1px transparent;
+    color: white;
+    opacity: 0.9;
+    text-shadow: 0 0 5px black;
   }
 
   &-4 {
@@ -99,25 +122,70 @@
       inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
   }
 
+  @media screen and (max-width: 576px) {
+
+    .font-bg {
+      font-size: 13px;
+      line-height: 14px;
+    }
+
+
+    .tile-control {
+      padding: 2px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+  }
+
 }
+
 .pos-img {
-  width: 70%;
-  height: auto;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   margin: auto;
 }
-@media screen and (max-width: 500px) {
+
+@media screen and (max-width: 576px) {
+  .pos-img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    margin: auto;
+  }
+
+
+}
+
+@media screen and (max-width: 576px) {
   .tile {
     width: @pixel-size * 9;
     height: @pixel-size * 9;
-  
+
   }
 }
 
-@media screen and (max-width: 280px) {
+@media screen and (max-width: 410px) {
   .tile {
-    width: @pixel-size * 5;
-    height: @pixel-size * 5;
-  
+    width: @pixel-size * 8;
+    height: @pixel-size * 8;
+
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .tile {
+    width: @pixel-size * 7;
+    height: @pixel-size * 7;
+
+  }
+}
+
+@media screen and (max-width: 346px) {
+  .tile {
+    width: @pixel-size * 7;
+    height: @pixel-size * 7;
+
   }
 }
