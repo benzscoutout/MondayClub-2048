@@ -530,7 +530,7 @@ export const useGame = () => {
 
     if(!inMotion && !hasChanged){
       byIds.forEach((id) => {
-        if(tiles[id].value === 16){
+        if(tiles[id].value === 2048){
           setIsEndGame(true);
         }
       });
