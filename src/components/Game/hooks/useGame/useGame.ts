@@ -10,6 +10,7 @@ import { GameReducer, initialState } from "./reducer";
 import { store } from 'react-context-hook'
 import { ifError } from "assert";
 import { useGlobalState } from '../../../state';
+import ApiServices from "../../../score-service";
 export const useGame = () => {
 
   const isInitialRender = useRef(true);
@@ -376,6 +377,7 @@ export const useGame = () => {
         })
         if(checkEnd){
           setIsEndGame(true);
+          ApiServices().writeUserData(score, false);
         }
       }else{
        
@@ -532,6 +534,7 @@ export const useGame = () => {
       byIds.forEach((id) => {
         if(tiles[id].value === 2048){
           setIsEndGame(true);
+          ApiServices().writeUserData(score, false);
         }
       });
     }

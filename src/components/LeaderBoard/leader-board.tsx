@@ -8,11 +8,9 @@ import IMG_CITY from "../../assets/images/city.png";
 import IMG_GAME from "../../assets/images/img-game.jpg"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAntag2xWg6vUn1sjQYFLwilbzednL37Os",
     authDomain: "monday-club-48189.firebaseapp.com",
     projectId: "monday-club-48189",
     storageBucket: "monday-club-48189.appspot.com",
-    messagingSenderId: "59628633346",
     appId: "1:59628633346:web:2a0c2fa4d80ca1ed87961b",
     measurementId: "G-DM31RQF8RH"
 };
@@ -53,9 +51,9 @@ const LeaderBoardComponent = () => {
                         leaderScore.map((element: any, index: number) => {
 
                             return (
-                                <div className='grid-leader'>
+                                <div className='grid-leader' key={index}>
                                     <span className='grid-item leader-board-text'>{index+1}</span>
-                                    <span className='grid-item leader-board-text' key={index}>{element}</span>
+                                    <span className='grid-item leader-board-text' >{element}</span>
                                 </div>
                             )
                         })
