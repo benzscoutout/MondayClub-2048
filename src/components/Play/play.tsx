@@ -1,41 +1,49 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Game } from "../Game"
 import { useGame } from "../Game/hooks/useGame";
 import './play.less'
 import IMG_CITY from "../../assets/images/city.png";
 import IMG_LOGO from "../../assets/images/logo.png";
+import Modal from 'react-modal';
+import { store } from 'react-context-hook'
+import ReactModal from "react-modal";
+import '../Tile/modal.less';
 export const Play = () => {
-    const [date, setDate] = useState<Date>(new Date());
-    const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
-    const [curr, setCurr] = useState(0);
-    const handleRestart = () => {
-      setDate(new Date());
-    };
-    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+  const [date, setDate] = useState<Date>(new Date());
+  const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
+  const [curr, setCurr] = useState(0);
+  const handleRestart = () => {
+    setDate(new Date());
+  };
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+ 
 
-    return (
-        <div>
-            <div className="play">
-                <div className="header">
-                    <div className="grid-control">
-                        <img src={IMG_LOGO} className="img-logo"></img>
-                    </div>
-                </div>
-                <div className="game-control">
-                    <Game key={date.toISOString()} />
-                </div>
-                <div className="grid-control">
-                    <button onClick={handleRestart} className="button-control">Restart</button>
-                </div>
-                <img src={IMG_CITY} className="img-city-2"></img>
-                {vw} x {vh}
+  return (
+    <div>
+    
+
+      <div className="play">
+        <div className="header">
+          <div className="grid-control">
+            <img src={IMG_LOGO} className="img-logo"></img>
+          </div>
+        </div>
+        <div className="game-control">
+          <Game key={date.toISOString()} />
+        </div>
+
+        <div className="grid-control">
+          <button onClick={handleRestart} className="button-control">Restart</button>
+        </div>
+        <img src={IMG_CITY} className="img-city-2"></img>
+        {/* {vw} x {vh} */}
 
 
 
 
 
-                {/* <div>
+        {/* <div>
         <p>
           <b>Wondering how was that built?</b> You can find a video tutorial and
           code here:
@@ -79,8 +87,8 @@ export const Play = () => {
           Matt Sokola
         </a>
       </div> */}
-            </div>
-        </div>
-    )
+      </div>
+    </div>
+  )
 
 }

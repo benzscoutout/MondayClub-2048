@@ -3,6 +3,8 @@ import invariant from "tiny-invariant";
 import { usePrevProps } from "../../hooks/usePrevProps";
 import { useBoard } from "../Board";
 import "./tile.less";
+import "./modal.less";
+
 import C1_IMG from "../../assets/images/c1.png";
 import C2_IMG from "../../assets/images/c2.png";
 import C3_IMG from "../../assets/images/c3.png";
@@ -15,6 +17,8 @@ import C9_IMG from "../../assets/images/c9.png";
 import C10_IMG from "../../assets/images/c10.png";
 import C11_IMG from "../../assets/images/c11.png";
 import { useWindowSize } from "@react-hook/window-size";
+import { store, useStore } from "react-context-hook";
+import ReactModal from "react-modal";
 type Props = {
   // tile value - 2, 4, 8, 16, 32, ..., 2048.∂
   value: number;
@@ -25,10 +29,13 @@ type Props = {
 };
 
 export const Tile = ({ value, position, zIndex }: Props) => {
+  const theState = store.getState();
+ 
   // retrieves board properties
   const [containerWidth, tileCount] = useBoard();
   //  state required to animate the highlight
   const [scale, setScale] = useState(1);
+  const [score, setScore] = useState(0);
 
   // the previous value (prop) - it is undefined if it is a new tile.
   const previousValue = usePrevProps<number>(value);
@@ -36,6 +43,8 @@ export const Tile = ({ value, position, zIndex }: Props) => {
   // check if tile is within the board boundries
   const withinBoardBoundaries =
     position[0] < tileCount && position[1] < tileCount;
+
+
   invariant(withinBoardBoundaries, "Tile out of bound");
   const [width, height] = useWindowSize()
 
@@ -54,11 +63,13 @@ export const Tile = ({ value, position, zIndex }: Props) => {
     }
   }, [shallHighlight, scale]);
 
+
+
+
   /**
    * Converts tile position from array index to pixels.
    */
   const positionToPixels = (position: number) => {
-    console.log(width);
     if (width > 576) {
       return (position / tileCount) * (containerWidth as number);
     }
@@ -84,9 +95,11 @@ export const Tile = ({ value, position, zIndex }: Props) => {
     transform: `scale(${scale})`,
     zIndex,
   };
+  
 
   return (
-    <div className={`tile tile-${value}`} style={style}>
+    <div className={`tile tile-${value}`} style={style}  id="main">
+
       {
         value === 2 ?
           <div className="tile-control">
@@ -94,7 +107,9 @@ export const Tile = ({ value, position, zIndex }: Props) => {
             <span className="font-bg">2</span>
           </div> :
           value === 4 ?
+
             <div className="tile-control">
+
               <img src={C2_IMG} className={`pos-img my-auto`}></img>
               <span className="font-bg">4</span>
             </div> :
@@ -145,6 +160,8 @@ export const Tile = ({ value, position, zIndex }: Props) => {
                               </div> :
                               value
       }
+
     </div>
   );
+  document.getElementById('main')
 };

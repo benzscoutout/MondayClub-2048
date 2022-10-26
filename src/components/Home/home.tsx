@@ -12,6 +12,10 @@ export const Home = () => {
 
         window.open('/start', '_self');
     }
+    const goLeaderboard = () => {
+
+        window.open('/leader-board', '_self');
+    }
   
 
     return (
@@ -19,6 +23,7 @@ export const Home = () => {
             <img src={IMG_LOGO} className="img-logo"></img>
             <img src={IMG_GAME} className="img-game"></img>
            <button className="button-start" onClick={goPlay}>Start</button>
+           <button className="button-leader-board" onClick={goLeaderboard}>Leaderboard</button>
            <img src={IMG_CITY} className="img-city"></img>
            <span className="text-license">@license https://mateuszsokola.github.io/2048-in-react/</span>
         </div>

@@ -1,26 +1,31 @@
 @import "../../styles/index.less";
 
 
-
-.home {
-
+.lb-control{
     display: flex;
     flex-direction: column;
     padding-top: 5%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 16px;
     min-height: 600px;
     margin-top: 30px;
     padding-bottom: 5%;
 
     .img-logo {
-        width: 300px;
+        width: 150px;
         height: auto;
         object-fit: contain;
         margin-left: auto;
         margin-right: auto;
+    }
 
-
+    .text-header-leader{
+        font-size: 40px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     .img-city {
@@ -40,18 +45,7 @@
         margin-left: auto;
         margin-right: auto;
     }
-
-    .img-game {
-        margin-top: 41px;
-        margin-bottom: 41px;
-        width: 300px;
-        height: auto;
-        object-fit: contain;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .button-start {
+    .button-home {
         cursor: pointer;
         margin-left: auto;
         margin-right: auto;
@@ -63,61 +57,56 @@
         height: 51px;
         color: white;
         width: 50%;
+        margin-top: 24px;
         margin-bottom: 16px;
     }
-
-    .button-leader-board {
-        cursor: pointer;
+    .grid-control{
+        width: 80%;
         margin-left: auto;
         margin-right: auto;
-        border: @yellowColor;
-        font-size: 26px;
-        font-weight: bold;
-        border-radius: 12px;
-        background-color: white;
-        height: 51px;
-        color: @yellowColor;
-        width: 50%;
-        margin-bottom: 16px;
     }
 
-    .text-license {
-        font-size: 14px;
+    .grid-leader{
+        display: grid;
+        grid-template-columns: 20% 80%;
+      
+        margin-left: auto;
+        width: 80%;
+        margin-right: auto;
+    }
+
+    .grid-item{
+        border: 2px white solid;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .leader-board-text{
         color: white;
-        opacity: 0.4;
         text-align: center;
-        margin-top: 30px;
+        font-size: 18px;
+
     }
 
-}
-
-@media screen and (max-width: 768px) {
-    .home {
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 15px;
-        padding-right: 15px;
-
-        .img-logo {
-            width: 200px;
+    @media screen and (max-width: 768px) {
+        .leader-board-text{
+            font-size: 15px;
         }
 
-        .img-game {
-            width: 200px;
+        .text-header-leader{
+            font-size: 24px;
+        }
+
+        .button-home{
+            font-size: 20px;
+        }
+        .grid-item{
+            border: 1px white solid;
+            padding-top: 3px;
+            padding-bottom: 3px;
         }
 
         .img-city{
             background-position: bottom;
-        }
-
-        .button-leader-board {
-            width: 300px;
-            font-size: 18px;
-        }
-        .button-start {
-            width: 300px;
-            font-size: 18px;
         }
     }
 }
