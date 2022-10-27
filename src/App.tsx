@@ -6,8 +6,7 @@ import "./App.less";
 import { useGame } from "./components/Game/hooks/useGame";
 import { Home } from "./components/Home/home";
 import { Play } from "./components/Play/play";
-import { store } from "react-context-hook";
-import ReactModal from "react-modal";
+import ReactGA from "react-ga4";
 import LeaderBoardComponent from "./components/LeaderBoard/leader-board";
 /* eslint-disable react/jsx-no-target-blank */
 import { createGlobalState } from "react-hooks-global-state";
@@ -31,5 +30,5 @@ export const App = () => {
    
   );
 };
-
+ReactGA.initialize("G-P4R31P5B1T");
 /* eslint-enable react/jsx-no-target-blank */

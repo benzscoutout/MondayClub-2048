@@ -10,9 +10,12 @@ import { store } from "react-context-hook";
 import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { useGlobalState } from '../state';
 import ApiServices from "../score-service";
+import UtilityService from "../utils/utility";
+import { useNavigate } from "react-router-dom";
 
 
 export const Game = () => {
+  let navigate = useNavigate();
   const [score, setScore] = useGlobalState('score')
   const [isEndGame, setIsEndGame] = useGlobalState('isEndGame')
   const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
@@ -116,13 +119,15 @@ export const Game = () => {
   }, [])
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const closeModal = () => {
-    window.open('/', '_self');
+    navigate('/')
   }
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setIsName(true);
     ApiServices().writeUserData(score,false,name);
+
+    UtilityService().clickSendEvent('Click', 'Play', 'Submit ' + name + ' : ' + score);
   }
 
   const handleChange = (e: any) => {

@@ -7,6 +7,8 @@ import IMG_LOGO from "../../assets/images/logo.png";
 import IMG_CITY from "../../assets/images/city.png";
 import IMG_GAME from "../../assets/images/img-game.jpg"
 import LeaderBoardModel from './leader-board-model';
+import { useNavigate } from 'react-router-dom';
+import UtilityService from '../utils/utility';
 
 const firebaseConfig = {
     authDomain: "monday-club-48189.firebaseapp.com",
@@ -18,7 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 const LeaderBoardComponent = () => {
-
+    let navigate = useNavigate();
     const [leaderScore, setLeaderScore] = useState<LeaderBoardModel[]>([])
 
     useEffect(() => {
@@ -46,7 +48,9 @@ const LeaderBoardComponent = () => {
     }
 
     const backHome = () => {
-        window.open('/', '_self');
+
+        UtilityService().clickSendEvent('Click', 'Leaderboard', 'Back Home');
+        navigate('/');
     }
     return (
         <>

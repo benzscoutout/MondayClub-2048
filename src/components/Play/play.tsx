@@ -8,11 +8,14 @@ import Modal from 'react-modal';
 import { store } from 'react-context-hook'
 import ReactModal from "react-modal";
 import '../Tile/modal.less';
+import { useNavigate } from "react-router-dom";
+import UtilityService from "../utils/utility";
 export const Play = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
   const [curr, setCurr] = useState(0);
   const handleRestart = () => {
+    UtilityService().clickSendEvent('Click', 'Play', 'Restart');
     setDate(new Date());
   };
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)

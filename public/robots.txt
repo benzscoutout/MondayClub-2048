@@ -1,3 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
+User-Agent: *
+Allow: /
+Sitemap: https://game-squad-tiles.mondayclub.io/sitemap.xml
