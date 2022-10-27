@@ -36,9 +36,7 @@ export const Play = () => {
           <Game key={date.toISOString()} />
         </div>
 
-        <div className="grid-control">
-          <button onClick={handleRestart} className="button-control">Restart</button>
-        </div>
+        
         <img src={IMG_CITY} className="img-city-2"></img>
         {/* {vw} x {vh} */}
 
