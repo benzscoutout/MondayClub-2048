@@ -274,25 +274,21 @@ export const useGame = () => {
           // row 1
           if (index === 0) {
             if (objectResult[1] !== item && objectResult[4] !== item) {
-              console.log("0 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 1) {
             if (objectResult[0] !== item && objectResult[2] !== item && objectResult[5] !== item) {
-              console.log("1 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 2) {
             if (objectResult[1] !== item && objectResult[3] !== item && objectResult[6] !== item) {
-              console.log("2 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 3) {
             if (objectResult[2] !== item && objectResult[7] !== item) {
-              console.log("3 Pass");
             } else {
               checkEnd = false;
             }
@@ -300,25 +296,21 @@ export const useGame = () => {
           // row 2
           else if (index === 4) {
             if (objectResult[0] !== item && objectResult[5] !== item && objectResult[8] !== item) {
-              console.log("4 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 5) {
             if (objectResult[1] !== item && objectResult[4] !== item && objectResult[6] !== item && objectResult[9] !== item) {
-              console.log("5 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 6) {
             if (objectResult[2] !== item && objectResult[5] !== item && objectResult[7] !== item && objectResult[10] !== item) {
-              console.log("6 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 7) {
             if (objectResult[3] !== item && objectResult[6] !== item && objectResult[11] !== item) {
-              console.log("7 Pass");
             } else {
               checkEnd = false;
             }
@@ -326,50 +318,42 @@ export const useGame = () => {
           // row 3
           else if (index === 8) {
             if (objectResult[4] !== item && objectResult[9] !== item && objectResult[12] !== item) {
-              console.log("8 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 9) {
             if (objectResult[5] !== item && objectResult[8] !== item && objectResult[10] !== item && objectResult[13] !== item) {
-              console.log("9 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 10) {
             if (objectResult[6] !== item && objectResult[9] !== item && objectResult[11] !== item && objectResult[14] !== item) {
-              console.log("10 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 11) {
             if (objectResult[7] !== item && objectResult[10] !== item && objectResult[15] !== item) {
-              console.log("11 Pass");
             } else {
               checkEnd = false;
             }
           } // row 4
           else if (index === 12) {
             if (objectResult[8] !== item && objectResult[13] !== item) {
-              console.log("12 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 13) {
             if (objectResult[9] !== item && objectResult[12] !== item && objectResult[14] !== item) {
-              console.log("13 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 14) {
             if (objectResult[10] !== item && objectResult[13] !== item && objectResult[15] !== item) {
-              console.log("14 Pass");
             } else {
               checkEnd = false;
             }
           } else if (index === 15) {
             if (objectResult[11] !== item && objectResult[14] !== item) {
-              console.log("15 Pass");
             } else {
               checkEnd = false;
             }
@@ -377,13 +361,13 @@ export const useGame = () => {
         })
         if(checkEnd){
           setIsEndGame(true);
-          ApiServices().writeUserData(score, false);
+         
         }
       }else{
        
       }
     }
-      , 1000);
+      ,600);
   };
 
   const moveLeftFactory = () => {
@@ -531,12 +515,14 @@ export const useGame = () => {
     }
 
     if(!inMotion && !hasChanged){
-      byIds.forEach((id) => {
-        if(tiles[id].value === 2048){
-          setIsEndGame(true);
-          ApiServices().writeUserData(score, false);
-        }
-      });
+    
+
+      // byIds.forEach((id) => {
+      //   if(tiles[id].value === 2048){
+      //     setIsEndGame(true);
+      //     ApiServices().writeUserData(score, false);
+      //   }
+      // });
     }
   }, [hasChanged, inMotion, createTile, generateRandomTile]);
 

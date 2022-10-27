@@ -14,11 +14,12 @@ export default function ApiServices() {
 
 
     return {
-        async writeUserData (score: number, isWinner: boolean){
+        async writeUserData (score: number, isWinner: boolean, name: string){
             try {
               const docRef = await addDoc(collection(db, "score-2048"), {
                 score: score,
                 isWinner: isWinner,
+                name: name,
                 timeStamp: new Date().toISOString()
               });
               console.log("Document written with ID: ", docRef.id);

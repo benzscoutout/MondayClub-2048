@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useThrottledCallback } from "use-debounce";
 import { useSwipeable } from 'react-swipeable';
 import { useGame } from "./hooks/useGame";
@@ -9,12 +9,15 @@ import { store } from "react-context-hook";
 
 import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { useGlobalState } from '../state';
+import ApiServices from "../score-service";
 
 
 export const Game = () => {
-  const score = useGlobalState('score');
-  const isEndGame = useGlobalState('isEndGame');
+  const [score, setScore] = useGlobalState('score')
+  const [isEndGame, setIsEndGame] = useGlobalState('isEndGame')
   const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
+  const [name, setName] = useGlobalState('name');
+  const [isName, setIsName] = useState(false);
   const theState = store.getState();
   const handleKeyDown = (e: KeyboardEvent) => {
     // disables page scrolling with keyboard arrows
@@ -22,20 +25,29 @@ export const Game = () => {
 
     switch (e.code) {
       case "ArrowLeft":
-        moveLeft();
-        calculateModal();
+        if (!isEndGame) {
+          console.log("LEFT MOVE");
+          moveLeft();
+          calculateModal();
+        }
         break;
       case "ArrowRight":
-        moveRight();
-        calculateModal();
+        if (!isEndGame) {
+          moveRight();
+          calculateModal();
+        }
         break;
       case "ArrowUp":
-        moveUp();
-        calculateModal();
+        if (!isEndGame) {
+          moveUp();
+          calculateModal();
+        }
         break;
       case "ArrowDown":
-        moveDown();
-        calculateModal();
+        if (!isEndGame) {
+          moveDown();
+          calculateModal();
+        }
         break;
     }
   };
@@ -48,23 +60,17 @@ export const Game = () => {
   );
 
   const calculateModal = () => {
-    console.log(isEndGame[0]);
-    if (isEndGame[0]) {
-      setIsOpen(true);
-    
 
-    }
   }
 
   useEffect(() => {
-    console.log(isEndGame[0]);
-    if (isEndGame[0]) {
+    if (isEndGame) {
       setIsOpen(true);
-    
     }
-  }, isEndGame)
-  
+  }, [])
+
   useEffect(() => {
+
     window.addEventListener("keydown", throttledHandleKeyDown);
 
     return () => {
@@ -72,10 +78,32 @@ export const Game = () => {
     };
   }, [throttledHandleKeyDown]);
   const handlers = useSwipeable({
-    onSwipedLeft: () => { moveLeft(); calculateModal(); },
-    onSwipedRight: () => { moveRight(); calculateModal(); },
-    onSwipedDown: () => { moveDown(); calculateModal(); },
-    onSwipedUp: () => { moveUp(); calculateModal(); },
+    onSwipedLeft: () => {
+      if (!isEndGame) {
+        moveLeft();
+        calculateModal();
+      }
+    },
+    onSwipedRight: () => {
+      if (!isEndGame) {
+        moveRight();
+        calculateModal();
+      }
+    },
+    onSwipedDown: () => {
+      if (!isEndGame) {
+        moveDown();
+        calculateModal();
+
+      }
+    },
+    onSwipedUp: () => {
+      if (!isEndGame) {
+        moveUp();
+        calculateModal();
+
+      }
+    },
     swipeDuration: Infinity,
     preventScrollOnSwipe: false,
     trackMouse: false,
@@ -91,6 +119,17 @@ export const Game = () => {
     window.open('/', '_self');
   }
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setIsName(true);
+    ApiServices().writeUserData(score,false,name);
+  }
+
+  const handleChange = (e: any) => {
+    console.log(e.target.value);
+    setName(e.target.value);
+  }
+
 
 
   const customStyle = {
@@ -103,17 +142,32 @@ export const Game = () => {
   return (
     <div className="container d-flex flex-column container-control" >
       {
-        isEndGame[0] &&
-          score[0] ?
+        isEndGame &&
+          score ?
           <div className="modal-control">
             <div className="modal-content">
               <div className="Modal" >
-             
-                <div className="score-control">
-                  <h2 className="text-score-header">Your Score</h2>
-                  <span className="text-score">{score[0]}</span>
-                  <span className="close-text" onClick={closeModal}>close</span>
-                </div>
+
+                {
+                  !isName ?
+
+                    <div className="score-control">
+                      <h2 className="text-score-header">Your name</h2>
+                      <form onSubmit={handleSubmit}>
+                        <div className="input-control">
+                          <input type="text" name="name" onChange={handleChange} maxLength={8} className="input-style" />
+                          <input type="submit" value="Submit" className="button-start" />
+                        </div>
+                      </form>
+                    </div> :
+                    <div className="score-control">
+                      <h2 className="text-score-header">Your Score</h2>
+                      <span className="text-score">{score}</span>
+                      <span className="close-text" onClick={closeModal}>close</span>
+                    </div>
+                }
+
+
 
               </div>
             </div>

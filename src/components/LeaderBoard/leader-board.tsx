@@ -6,6 +6,7 @@ import './leader-board.less';
 import IMG_LOGO from "../../assets/images/logo.png";
 import IMG_CITY from "../../assets/images/city.png";
 import IMG_GAME from "../../assets/images/img-game.jpg"
+import LeaderBoardModel from './leader-board-model';
 
 const firebaseConfig = {
     authDomain: "monday-club-48189.firebaseapp.com",
@@ -18,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 const LeaderBoardComponent = () => {
 
-    const [leaderScore, setLeaderScore] = useState([])
+    const [leaderScore, setLeaderScore] = useState<LeaderBoardModel[]>([])
 
     useEffect(() => {
         readData();
@@ -30,12 +31,18 @@ const LeaderBoardComponent = () => {
         const q = query(scoreRef, orderBy("score", "desc"), limit(10));
         const leaderSc: any = [];
         const querySnapshot = await getDocs(q);
+        let leaderSC: LeaderBoardModel[] = [];
         querySnapshot.forEach((doc) => {
-            console.log(doc.data());
-            leaderSc.push(doc.data().score);
+            leaderSc.push(doc.data());
+            const objectSC: LeaderBoardModel = {
+                isWinner: doc.data().isWinner,
+                name: doc.data().name,
+                score: doc.data().score,
+                timeStamp: doc.data().timeStamp
+            }
+            leaderSC.push(objectSC)
         });
-
-        setLeaderScore(leaderSc);
+        setLeaderScore(leaderSC);
     }
 
     const backHome = () => {
@@ -47,13 +54,19 @@ const LeaderBoardComponent = () => {
                 <img src={IMG_LOGO} className="img-logo"></img>
                 <h1 className='text-header-leader'>LEADERBOARD</h1>
                 <div className='grid-control'>
+                    <div className='grid-leader' >
+                        <span className='grid-item leader-board-text'>Rank</span>
+                        <span className='grid-item leader-board-text' >Name</span>
+                        <span className='grid-item leader-board-text' >Score</span>
+                    </div>
                     {
-                        leaderScore.map((element: any, index: number) => {
+                        leaderScore.map((element: LeaderBoardModel, index: number) => {
 
                             return (
                                 <div className='grid-leader' key={index}>
-                                    <span className='grid-item leader-board-text'>{index+1}</span>
-                                    <span className='grid-item leader-board-text' >{element}</span>
+                                    <span className='grid-item leader-board-text'>{index + 1}</span>
+                                    <span className='grid-item leader-board-text' >{element.name}</span>
+                                    <span className='grid-item leader-board-text' >{element.score.toLocaleString()}</span>
                                 </div>
                             )
                         })
