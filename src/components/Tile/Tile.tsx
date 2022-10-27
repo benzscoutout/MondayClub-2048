@@ -18,7 +18,6 @@ import C10_IMG from "../../assets/images/c10.png";
 import C11_IMG from "../../assets/images/c11.png";
 import { useWindowSize } from "@react-hook/window-size";
 import { store, useStore } from "react-context-hook";
-import ReactModal from "react-modal";
 type Props = {
   // tile value - 2, 4, 8, 16, 32, ..., 2048.∂
   value: number;

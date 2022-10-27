@@ -1,0 +1,93 @@
+@import "../../styles/index.less";
+
+.play-timer {
+
+    padding-top: 5%;
+
+    .img-logo {
+        width: 300px;
+        height: auto;
+        object-fit: contain;
+        margin-left: auto;
+        margin-right: auto;
+
+
+    }
+
+   
+    .img-city-2-timer {
+        position: absolute;
+        background: url(../../assets/images/city.png);
+        background-repeat: repeat-x;
+        background-size: contain;
+        height: 300px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        position: fixed;
+        margin-top: 60px;
+        width: 100%;
+        object-fit: contain;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.text-timer-control{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: @yellowColor;
+    display: flex;
+    padding-top: 8px;
+    padding-bottom: 28px;
+    flex-direction: column;
+}
+.text-timer{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.text-time-left{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .play-timer {
+        width: 100%;
+
+
+        .img-logo {
+            width: 200px;
+        }
+
+        .img-game {
+            width: 200px;
+
+        }
+
+        .img-city-2-timer {
+            background-position: bottom;
+      
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overscroll-behavior: contain !important;
+        overflow: hidden !important;
+    }
+
+   
+}

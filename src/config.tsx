@@ -1,6 +1,7 @@
 const test = {
     ga: "",
     ga_4: "G-P4R31P5B1T",
+    timer: "1"
    
 
 };
@@ -9,6 +10,7 @@ const test = {
 const prod = {
     ga: "",
     ga_4: "G-P4R31P5B1T",
+    timer: "1"
    
 };
 

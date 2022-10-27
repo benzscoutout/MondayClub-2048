@@ -4,9 +4,6 @@ import { useGame } from "../Game/hooks/useGame";
 import './play.less'
 import IMG_CITY from "../../assets/images/city.png";
 import IMG_LOGO from "../../assets/images/logo.png";
-import Modal from 'react-modal';
-import { store } from 'react-context-hook'
-import ReactModal from "react-modal";
 import '../Tile/modal.less';
 import { useNavigate } from "react-router-dom";
 import UtilityService from "../utils/utility";

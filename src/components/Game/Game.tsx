@@ -16,7 +16,8 @@ import { useNavigate } from "react-router-dom";
 
 export const Game = () => {
   let navigate = useNavigate();
-  const [score, setScore] = useGlobalState('score')
+  const [score] = useGlobalState('score');
+  const currentScore = score;
   const [isEndGame, setIsEndGame] = useGlobalState('isEndGame')
   const [tiles, moveLeft, moveRight, moveUp, moveDown] = useGame();
   const [name, setName] = useGlobalState('name');
@@ -70,6 +71,7 @@ export const Game = () => {
     if (isEndGame) {
       setIsOpen(true);
     }
+    console.log("Score " + currentScore)
   }, [])
 
   useEffect(() => {
@@ -113,10 +115,7 @@ export const Game = () => {
     trackTouch: true,
     touchEventOptions: { passive: true }
   });
-  useEffect(() => {
-    console.log(tiles);
 
-  }, [])
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const closeModal = () => {
     navigate('/')
@@ -135,20 +134,10 @@ export const Game = () => {
     setName(e.target.value);
   }
 
-
-
-  const customStyle = {
-    content: {
-
-      backgroundColor: 'black',
-    },
-
-  }
   return (
     <div className="container d-flex flex-column container-control" >
       {
-        isEndGame &&
-          score ?
+        isEndGame ?
           <div className="modal-control">
             <div className="modal-content">
               <div className="Modal" >
@@ -167,7 +156,7 @@ export const Game = () => {
                     </div> :
                     <div className="score-control">
                       <h2 className="text-score-header">Your Score</h2>
-                      <span className="text-score">{score}</span>
+                      <span className="text-score">{currentScore}</span>
                       <span className="close-text" onClick={closeModal}>close</span>
                     </div>
                 }
@@ -179,7 +168,7 @@ export const Game = () => {
           </div> : null
       }
       <div>
-        Score : {score}
+        Score : {currentScore}
       </div>
       <div className="desktop-custom">
         <Board tiles={tiles} tileCountPerRow={tileCount} />

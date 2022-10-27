@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import ReactModal from "react-modal";
 import {
   animationDuration,
   tileCount as tileCountPerRowOrColumn,
@@ -7,7 +6,6 @@ import {
 import { TileMeta } from "../../../Tile";
 import { useIds } from "../useIds";
 import { GameReducer, initialState } from "./reducer";
-import { store } from 'react-context-hook'
 import { ifError } from "assert";
 import { useGlobalState } from '../../../state';
 import ApiServices from "../../../score-service";
@@ -64,7 +62,6 @@ export const useGame = () => {
       } else {
         currentScore = score + (source.value);
       }
-      store.set('score', currentScore)
       setScore(currentScore);
     } else {
       currentScore = source.value * 2;
@@ -92,7 +89,6 @@ export const useGame = () => {
       } else {
         currentScore = (source.value);
       }
-      store.set('score', currentScore)
       setScore(currentScore);
     }
     console.log(currentScore);

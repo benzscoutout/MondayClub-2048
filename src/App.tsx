@@ -10,20 +10,28 @@ import ReactGA from "react-ga4";
 import LeaderBoardComponent from "./components/LeaderBoard/leader-board";
 /* eslint-disable react/jsx-no-target-blank */
 import { createGlobalState } from "react-hooks-global-state";
+import PlayTimer from "./components/Play-Timer/play-timer";
+import CountDownComp from "./components/CountDown/countdown";
 export const App = () => {
 
   const initialStateScore = { score: 0, isEndGame: false, isWinner: false };
   const { useGlobalState } = createGlobalState(initialStateScore);
-
+  const [isEndGame] = useState('isEndGame');
+  useEffect(() => {
+    console.log(isEndGame);
+  }, [])
 
   return (
     <div className="App">
+       <CountDownComp></CountDownComp>
     <BrowserRouter>
 
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/start" element={<Play />} />
+        <Route path="/start-timer" element={<PlayTimer />} />
         <Route path="/leader-board" element={<LeaderBoardComponent />} />
+        
       </Routes>
     </BrowserRouter>
   </div>
