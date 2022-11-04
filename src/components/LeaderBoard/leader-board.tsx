@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import './leader-board.less';
 import IMG_LOGO from "../../assets/images/logo.png";
 import IMG_CITY from "../../assets/images/city.png";
-import IMG_GAME from "../../assets/images/img-game.jpg"
 import LeaderBoardModel from './leader-board-model';
 import { useNavigate } from 'react-router-dom';
 import UtilityService from '../utils/utility';

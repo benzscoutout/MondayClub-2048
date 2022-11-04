@@ -37,6 +37,7 @@
   "scripts": {
     "start": "export REACT_APP_ENVIRONMENT=test && craco start",
     "build": "export REACT_APP_ENVIRONMENT=production && cross-env BUILD_PATH=build craco build",
+    "win:build": "set REACT_APP_ENVIRONMENT=production  && cross-env BUILD_PATH=build craco build",
     "deploy": "gh-pages -d build",
     "deploy:prod": "firebase use monday-club-48189 && firebase target:clear hosting game-squad-2048 && firebase target:apply hosting game-squad-2048 game-squad-2048 && firebase deploy --only hosting:game-squad-2048"
   },
